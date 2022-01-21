@@ -50,27 +50,37 @@ function Coupon({ onEnter }) {
 
 const safeMakePurchase = robustAsync(makePurchase);
 
-function App() {
+function useMakePurchaseExecutor() {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
-  const { user } = useUserStore();
-  const { cart } = useCartStore();
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  async function execute(command) {
     setStatus("loading");
-
-    const { coupon } = Object.fromEntries(new FormData(e.target));
-    const result = await safeMakePurchase({ user, cart, coupon, service });
+    const result = await safeMakePurchase({ ...command, service });
 
     if (result.value) alert(`Your order ID is ${result.value}!`);
     if (result.error) setError("Woah! Something went terribly wrong!");
     setStatus("finished");
   }
 
+  return { execute, status, error };
+}
+
+function App() {
+  const { user } = useUserStore();
+  const { cart } = useCartStore();
+  const { execute, status, error } = useMakePurchaseExecutor();
+
   if (!!error) return error;
   if (status === "loading") return "Loading...";
   if (status === "finished") return "We'll call you to confirm the order.";
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const { coupon } = Object.fromEntries(new FormData(e.target));
+    const makePurchaseCommand = { user, cart, coupon };
+    execute(makePurchaseCommand);
+  }
 
   return (
     <form onSubmit={handleSubmit}>
