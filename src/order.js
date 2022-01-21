@@ -8,7 +8,7 @@ function selectDiscount(total, coupon) {
   let discount = 0;
   switch (coupon) {
     case "HAPPY_MONDAY":
-      discount = total > 20 ? 20 : total;
+      discount = Math.min(total, 20);
       break;
     case "LAZY_FRIDAY":
       discount = total * 0.2;
