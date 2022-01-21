@@ -84,7 +84,7 @@ function App() {
     );
   }
 
-  if (!isLoading && !isIdle) {
+  if (status === "finished") {
     return "We'll call you to confirm the order.";
   }
 }
