@@ -1,4 +1,5 @@
 import { totalPrice } from "./product";
+import { isCartEmpty } from "./cart";
 import { callApi } from "./api";
 
 function selectDiscount(total, coupon) {
@@ -14,10 +15,6 @@ function selectDiscount(total, coupon) {
       discount = 0;
   }
   return discount;
-}
-
-function isCartEmpty(cart) {
-  return !cart.products.length;
 }
 
 function userHasEnoughMoney(user, cart) {

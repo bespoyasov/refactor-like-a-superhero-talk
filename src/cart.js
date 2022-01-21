@@ -13,3 +13,7 @@ export function useCartStore() {
   const [cart, setCart] = useState(cart_);
   return { cart, setCart };
 }
+
+export function isCartEmpty(cart) {
+  return !cart.products.length;
+}
