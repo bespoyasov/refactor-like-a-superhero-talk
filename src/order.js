@@ -3,18 +3,13 @@ import { isEmpty } from "./cart";
 import { callApi } from "./api";
 
 function selectDiscount(total, coupon) {
-  let discount = 0;
-  switch (coupon) {
-    case "HAPPY_MONDAY":
-      discount = Math.min(total, 20);
-      break;
-    case "LAZY_FRIDAY":
-      discount = total * 0.2;
-      break;
-    default:
-      discount = 0;
-  }
-  return discount;
+  const zeroDiscount = 0;
+  const couponDiscounts = {
+    HAPPY_MONDAY: Math.min(total, 20),
+    LAZY_FRIDAY: total * 0.2,
+  };
+
+  return couponDiscounts[coupon] ?? zeroDiscount;
 }
 
 function userHasEnoughMoney(user, cart) {
