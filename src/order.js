@@ -28,13 +28,13 @@ function userHasEnoughMoney(user, cart) {
 }
 
 function createOrder({ user, cart, coupon }) {
-  const _userId = user.name;
+  const userName = user.name;
   const products = cart.products;
   const total = totalPrice(products);
   const discount = selectDiscount(total, coupon);
 
   return {
-    user: _userId,
+    user: userName,
     products,
     total,
     discount,
