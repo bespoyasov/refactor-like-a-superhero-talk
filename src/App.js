@@ -51,7 +51,7 @@ function App() {
   const { user } = useUserStore();
   const { cart } = useCartStore();
 
-  async function handleSubmitByValidatingDataAndCreatingOrder(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setStatus("loading");
 
@@ -69,7 +69,7 @@ function App() {
   if (!error) {
     if (status === "idle") {
       return (
-        <form onSubmit={handleSubmitByValidatingDataAndCreatingOrder}>
+        <form onSubmit={handleSubmit}>
           <UserInfo user={user} />
           <ProductList products={cart.products} />
           <Coupon />
