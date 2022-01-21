@@ -1,5 +1,5 @@
 import { totalPrice } from "./product";
-import { isCartEmpty } from "./cart";
+import { isEmpty } from "./cart";
 import { callApi } from "./api";
 
 function selectDiscount(total, coupon) {
@@ -36,7 +36,7 @@ function createOrder({ user, cart, coupon }) {
 }
 
 export async function makePurchase({ user, cart, coupon }) {
-  if (isCartEmpty(cart)) throw new Error("The cart is empty.");
+  if (isEmpty(cart)) throw new Error("The cart is empty.");
   if (!userHasEnoughMoney(user, cart)) throw new Error("Not enough money.");
 
   const order = createOrder({ user, cart, coupon });

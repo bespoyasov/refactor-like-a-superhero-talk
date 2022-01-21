@@ -14,6 +14,6 @@ export function useCartStore() {
   return { cart, setCart };
 }
 
-export function isCartEmpty(cart) {
+export function isEmpty(cart) {
   return !cart.products.length;
 }
