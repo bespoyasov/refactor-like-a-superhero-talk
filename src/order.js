@@ -1,3 +1,5 @@
+import { callApi } from "./api";
+
 export async function makePurchase({ user, cart, coupon }) {
   if (!cart.products.length) throw new Error("The cart is empty.");
   if (
@@ -33,11 +35,5 @@ export async function makePurchase({ user, cart, coupon }) {
     discount,
   };
 
-  // Pretend like this is an API call =)
-  return await new Promise((resolve) => {
-    setTimeout(() => {
-      console.log(order);
-      resolve("some-order-id");
-    }, 500);
-  });
+  return await callApi(order);
 }
