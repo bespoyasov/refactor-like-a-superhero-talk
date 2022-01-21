@@ -51,7 +51,7 @@ function Coupon({ onEnter }) {
 }
 
 function App() {
-  let _userId, products;
+  let products;
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
   const { user } = useUserStore();
@@ -78,7 +78,7 @@ function App() {
         throw new Error("Not enough money.");
       }
 
-      _userId = user.name;
+      const _userId = user.name;
       let price = 0;
       for (const p_i in products) {
         price += products[p_i].price * products[p_i].count;
