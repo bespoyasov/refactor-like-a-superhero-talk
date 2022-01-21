@@ -66,8 +66,11 @@ function App() {
     setStatus("finished");
   }
 
+  const isIdle = status === "idle";
+  const isLoading = status === "loading";
+
   if (!error) {
-    if (status === "idle") {
+    if (isIdle) {
       return (
         <form onSubmit={handleSubmit}>
           <UserInfo user={user} />
@@ -76,11 +79,11 @@ function App() {
           <button>Purchase</button>
         </form>
       );
-    } else if (status === "loading") {
+    } else if (isLoading) {
       return "Loading...";
     }
 
-    if (status !== "loading" && status !== "idle") {
+    if (!isLoading && !isIdle) {
       return "We'll call you to confirm the order.";
     }
   } else {
