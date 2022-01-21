@@ -54,11 +54,7 @@ function App() {
     e.preventDefault();
     setStatus("loading");
 
-    const couponElement = e.target
-      .closest("form")
-      .querySelector('[name="coupon"]');
-    const couponValue = couponElement.value;
-    const coupon = String(couponValue);
+    const { coupon } = Object.fromEntries(new FormData(e.target));
 
     try {
       if (!cart.products.length) throw new Error("The cart is empty.");
