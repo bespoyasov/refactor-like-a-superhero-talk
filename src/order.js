@@ -23,11 +23,13 @@ function isCartEmpty(cart) {
   return !cart.products.length;
 }
 
+function userHasEnoughMoney(user, cart) {
+  return user.account >= totalPrice(cart.products);
+}
+
 export async function makePurchase({ user, cart, coupon }) {
   if (isCartEmpty(cart)) throw new Error("The cart is empty.");
-  if (user.account < totalPrice(cart.products)) {
-    throw new Error("Not enough money.");
-  }
+  if (!userHasEnoughMoney(user, cart)) throw new Error("Not enough money.");
 
   const _userId = user.name;
   const products = cart.products;
