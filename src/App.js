@@ -77,10 +77,10 @@ function App() {
 
       const _userId = user.name;
       const products = cart.products;
-      let price = 0;
-      for (const p_i in products) {
-        price += products[p_i].price * products[p_i].count;
-      }
+      const price = products.reduce(
+        (tally, { price, count }) => tally + price * count,
+        0
+      );
 
       let discount = 0;
       switch (coupon) {
