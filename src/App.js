@@ -84,15 +84,17 @@ function App() {
           discount = 0;
       }
 
+      const order = {
+        user: _userId,
+        products,
+        total,
+        discount,
+      };
+
       // Pretend like this is an API call =)
       const res = await new Promise((resolve) => {
         setTimeout(() => {
-          console.log({
-            user: _userId,
-            products,
-            total,
-            discount,
-          });
+          console.log(order);
           resolve("some-order-id");
         }, 500);
       });
