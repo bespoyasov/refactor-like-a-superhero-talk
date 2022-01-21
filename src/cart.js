@@ -9,7 +9,7 @@ const cart_ = {
   ],
 };
 
-export function useCart() {
+export function useCartStore() {
   const [cart, setCart] = useState(cart_);
   return { cart, setCart };
 }

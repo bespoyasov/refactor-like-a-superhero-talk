@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useCart } from "./cart";
+import { useCartStore } from "./cart";
 import { useUserStore } from "./user";
 import { makePurchase } from "./order";
 
@@ -49,7 +49,7 @@ function App() {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
   const { user } = useUserStore();
-  const { cart } = useCart();
+  const { cart } = useCartStore();
 
   async function handleSubmitByValidatingDataAndCreatingOrder(e) {
     e.preventDefault();
