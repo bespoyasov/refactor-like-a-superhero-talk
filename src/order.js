@@ -27,21 +27,24 @@ function userHasEnoughMoney(user, cart) {
   return user.account >= totalPrice(cart.products);
 }
 
-export async function makePurchase({ user, cart, coupon }) {
-  if (isCartEmpty(cart)) throw new Error("The cart is empty.");
-  if (!userHasEnoughMoney(user, cart)) throw new Error("Not enough money.");
-
+function createOrder({ user, cart, coupon }) {
   const _userId = user.name;
   const products = cart.products;
   const total = totalPrice(products);
   const discount = selectDiscount(total, coupon);
 
-  const order = {
+  return {
     user: _userId,
     products,
     total,
     discount,
   };
+}
 
+export async function makePurchase({ user, cart, coupon }) {
+  if (isCartEmpty(cart)) throw new Error("The cart is empty.");
+  if (!userHasEnoughMoney(user, cart)) throw new Error("Not enough money.");
+
+  const order = createOrder({ user, cart, coupon });
   return await callApi(order);
 }
