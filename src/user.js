@@ -9,3 +9,5 @@ export function useUserStore() {
   const [user, setUser] = useState(user_);
   return { user, setUser };
 }
+
+export { user_ as userStub };

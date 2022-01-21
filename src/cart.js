@@ -17,3 +17,5 @@ export function useCartStore() {
 export function isEmpty(cart) {
   return !cart.products.length;
 }
+
+export { cart_ as cartStub };
