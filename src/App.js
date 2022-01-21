@@ -4,6 +4,8 @@ import { useCartStore } from "./cart";
 import { useUserStore } from "./user";
 import { makePurchase } from "./order";
 
+import { robustAsync } from "./utils";
+
 function UserInfo({ user }) {
   return (
     <header>
@@ -45,6 +47,8 @@ function Coupon({ onEnter }) {
   );
 }
 
+const safeMakePurchase = robustAsync(makePurchase);
+
 function App() {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
@@ -56,13 +60,10 @@ function App() {
     setStatus("loading");
 
     const { coupon } = Object.fromEntries(new FormData(e.target));
+    const { result, error } = await safeMakePurchase({ user, cart, coupon });
 
-    try {
-      const res = await makePurchase({ user, cart, coupon });
-      alert(`Your order ID is ${res}!`);
-    } catch (error) {
-      setError("Woah! Something went terribly wrong!");
-    }
+    if (result) alert(`Your order ID is ${result}!`);
+    if (error) setError("Woah! Something went terribly wrong!");
     setStatus("finished");
   }
 
