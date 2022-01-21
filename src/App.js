@@ -61,15 +61,10 @@ function App() {
     setStatus("loading");
 
     const { coupon } = Object.fromEntries(new FormData(e.target));
-    const { result, error } = await safeMakePurchase({
-      user,
-      cart,
-      coupon,
-      service,
-    });
+    const result = await safeMakePurchase({ user, cart, coupon, service });
 
-    if (result) alert(`Your order ID is ${result}!`);
-    if (error) setError("Woah! Something went terribly wrong!");
+    if (result.value) alert(`Your order ID is ${result.value}!`);
+    if (result.error) setError("Woah! Something went terribly wrong!");
     setStatus("finished");
   }
 
