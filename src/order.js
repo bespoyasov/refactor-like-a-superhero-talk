@@ -1,8 +1,5 @@
+import { totalPrice } from "./product";
 import { callApi } from "./api";
-
-function totalPrice(products) {
-  return products.reduce((tally, { price, count }) => tally + price * count, 0);
-}
 
 function selectDiscount(total, coupon) {
   let discount = 0;
