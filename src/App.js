@@ -77,7 +77,7 @@ function App() {
 
       const _userId = user.name;
       const products = cart.products;
-      const price = products.reduce(
+      const total = products.reduce(
         (tally, { price, count }) => tally + price * count,
         0
       );
@@ -85,10 +85,10 @@ function App() {
       let discount = 0;
       switch (coupon) {
         case "HAPPY_MONDAY":
-          discount = price > 20 ? 20 : price;
+          discount = total > 20 ? 20 : total;
           break;
         case "LAZY_FRIDAY":
-          discount = price * 0.2;
+          discount = total * 0.2;
           break;
         default:
           discount = 0;
@@ -100,7 +100,7 @@ function App() {
           console.log({
             user: _userId,
             products,
-            total: price,
+            total,
             discount,
           });
           resolve("some-order-id");
