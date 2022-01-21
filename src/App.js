@@ -51,7 +51,7 @@ function Coupon({ onEnter }) {
 }
 
 function App() {
-  let order, _userId, products;
+  let _userId, products;
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
   const { persona } = useStore();
