@@ -67,26 +67,17 @@ function App() {
   }
 
   if (!!error) return error;
+  if (status === "loading") return "Loading...";
+  if (status === "finished") return "We'll call you to confirm the order.";
 
-  const isIdle = status === "idle";
-  const isLoading = status === "loading";
-
-  if (isLoading) return "Loading...";
-
-  if (isIdle) {
-    return (
-      <form onSubmit={handleSubmit}>
-        <UserInfo user={user} />
-        <ProductList products={cart.products} />
-        <Coupon />
-        <button>Purchase</button>
-      </form>
-    );
-  }
-
-  if (status === "finished") {
-    return "We'll call you to confirm the order.";
-  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <UserInfo user={user} />
+      <ProductList products={cart.products} />
+      <Coupon />
+      <button>Purchase</button>
+    </form>
+  );
 }
 
 export default App;
