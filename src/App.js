@@ -51,13 +51,10 @@ function Coupon({ onEnter }) {
 }
 
 function App() {
-  let products;
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
   const { user } = useUserStore();
   const { cart } = useCart();
-
-  products = cart.products;
 
   async function handleSubmitByValidatingDataAndCreatingOrder(e) {
     e.preventDefault();
@@ -79,6 +76,7 @@ function App() {
       }
 
       const _userId = user.name;
+      const products = cart.products;
       let price = 0;
       for (const p_i in products) {
         price += products[p_i].price * products[p_i].count;
