@@ -66,28 +66,26 @@ function App() {
     setStatus("finished");
   }
 
+  if (!!error) return error;
+
   const isIdle = status === "idle";
   const isLoading = status === "loading";
 
-  if (!error) {
-    if (isIdle) {
-      return (
-        <form onSubmit={handleSubmit}>
-          <UserInfo user={user} />
-          <ProductList products={cart.products} />
-          <Coupon />
-          <button>Purchase</button>
-        </form>
-      );
-    } else if (isLoading) {
-      return "Loading...";
-    }
+  if (isIdle) {
+    return (
+      <form onSubmit={handleSubmit}>
+        <UserInfo user={user} />
+        <ProductList products={cart.products} />
+        <Coupon />
+        <button>Purchase</button>
+      </form>
+    );
+  } else if (isLoading) {
+    return "Loading...";
+  }
 
-    if (!isLoading && !isIdle) {
-      return "We'll call you to confirm the order.";
-    }
-  } else {
-    return error;
+  if (!isLoading && !isIdle) {
+    return "We'll call you to confirm the order.";
   }
 }
 
