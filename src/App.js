@@ -40,12 +40,6 @@ function Coupon({ onEnter }) {
       name="coupon"
       value={coupon}
       onChange={(e) => setCoupon(e.target.value)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          onEnter(e);
-        }
-      }}
     />
   );
 }
@@ -116,13 +110,11 @@ function App() {
   if (!error) {
     if (status === "idle") {
       return (
-        <form>
+        <form onSubmit={handleSubmitByValidatingDataAndCreatingOrder}>
           <UserInfo user={user} />
           <ProductList products={cart.products} />
-          <Coupon onEnter={handleSubmitByValidatingDataAndCreatingOrder} />
-          <button onClick={handleSubmitByValidatingDataAndCreatingOrder}>
-            Purchase
-          </button>
+          <Coupon />
+          <button>Purchase</button>
         </form>
       );
     } else if (status === "loading") {
