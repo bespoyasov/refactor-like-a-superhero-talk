@@ -19,8 +19,12 @@ function selectDiscount(total, coupon) {
   return discount;
 }
 
+function isCartEmpty(cart) {
+  return !cart.products.length;
+}
+
 export async function makePurchase({ user, cart, coupon }) {
-  if (!cart.products.length) throw new Error("The cart is empty.");
+  if (isCartEmpty(cart)) throw new Error("The cart is empty.");
   if (user.account < totalPrice(cart.products)) {
     throw new Error("Not enough money.");
   }
