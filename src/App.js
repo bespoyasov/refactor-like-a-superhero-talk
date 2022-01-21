@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { useCart } from "./cart";
-import { useStore } from "./user";
+import { useUserStore } from "./user";
 
 function UserInfo({ user }) {
   return (
@@ -54,7 +54,7 @@ function App() {
   let _userId, products;
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
-  const { persona } = useStore();
+  const { user } = useUserStore();
   const { cart } = useCart();
 
   products = cart.products;
@@ -72,13 +72,13 @@ function App() {
     try {
       if (!cart.products.length) throw new Error("The cart is empty.");
       if (
-        persona.account <
+        user.account <
         cart.products.reduce((t, { price, count }) => t + price * count, 0)
       ) {
         throw new Error("Not enough money.");
       }
 
-      _userId = persona.name;
+      _userId = user.name;
       let price = 0;
       for (const p_i in products) {
         price += products[p_i].price * products[p_i].count;
@@ -119,7 +119,7 @@ function App() {
     if (status === "idle") {
       return (
         <form>
-          <UserInfo user={persona} />
+          <UserInfo user={user} />
           <ProductList products={cart.products} />
           <Coupon onEnter={handleSubmitByValidatingDataAndCreatingOrder} />
           <button onClick={handleSubmitByValidatingDataAndCreatingOrder}>

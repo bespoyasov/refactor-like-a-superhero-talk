@@ -5,7 +5,7 @@ const user_ = {
   account: 300,
 };
 
-export function useStore() {
-  const [persona, setPersona] = useState(user_);
-  return { persona, setPersona };
+export function useUserStore() {
+  const [user, setUser] = useState(user_);
+  return { user, setUser };
 }
