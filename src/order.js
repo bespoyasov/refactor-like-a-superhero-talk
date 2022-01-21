@@ -1,20 +1,18 @@
 import { callApi } from "./api";
 
+function totalPrice(products) {
+  return products.reduce((tally, { price, count }) => tally + price * count, 0);
+}
+
 export async function makePurchase({ user, cart, coupon }) {
   if (!cart.products.length) throw new Error("The cart is empty.");
-  if (
-    user.account <
-    cart.products.reduce((t, { price, count }) => t + price * count, 0)
-  ) {
+  if (user.account < totalPrice(cart.products)) {
     throw new Error("Not enough money.");
   }
 
   const _userId = user.name;
   const products = cart.products;
-  const total = products.reduce(
-    (tally, { price, count }) => tally + price * count,
-    0
-  );
+  const total = totalPrice(products);
 
   let discount = 0;
   switch (coupon) {
