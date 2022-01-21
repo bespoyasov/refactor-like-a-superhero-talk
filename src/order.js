@@ -1,6 +1,5 @@
 import { totalPrice } from "./product";
 import { isEmpty } from "./cart";
-import { callApi } from "./api";
 
 function selectDiscount(total, coupon) {
   const zeroDiscount = 0;
@@ -32,11 +31,11 @@ function applyCoupon({ order, coupon }) {
   return { ...order, discount: selectDiscount(order.total, coupon) };
 }
 
-export async function makePurchase({ user, cart, coupon }) {
+export async function makePurchase({ user, cart, coupon, service }) {
   if (isEmpty(cart)) throw new Error("The cart is empty.");
   if (!userHasEnoughMoney(user, cart)) throw new Error("Not enough money.");
 
   const created = createOrder({ user, cart });
   const discounted = applyCoupon({ order: created, coupon });
-  return await callApi(discounted);
+  return await service.sendOrder(discounted);
 }

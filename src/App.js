@@ -5,6 +5,7 @@ import { useUserStore } from "./user";
 import { makePurchase } from "./order";
 
 import { robustAsync } from "./utils";
+import { purchaseApi as service } from "./api";
 
 function UserInfo({ user }) {
   return (
@@ -60,7 +61,12 @@ function App() {
     setStatus("loading");
 
     const { coupon } = Object.fromEntries(new FormData(e.target));
-    const { result, error } = await safeMakePurchase({ user, cart, coupon });
+    const { result, error } = await safeMakePurchase({
+      user,
+      cart,
+      coupon,
+      service,
+    });
 
     if (result) alert(`Your order ID is ${result}!`);
     if (error) setError("Woah! Something went terribly wrong!");

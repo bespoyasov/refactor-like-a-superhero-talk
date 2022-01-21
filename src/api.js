@@ -1,6 +1,6 @@
 // Pretend like this is an API call =)
 
-export function callApi(order) {
+function callApi(order) {
   return new Promise((resolve) => {
     setTimeout(() => {
       console.log(order);
@@ -8,3 +8,7 @@ export function callApi(order) {
     }, 500);
   });
 }
+
+export const purchaseApi = {
+  sendOrder: callApi,
+};
