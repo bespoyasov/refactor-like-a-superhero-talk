@@ -84,22 +84,27 @@ function App() {
         price += products[p_i].price * products[p_i].count;
       }
 
-      let d = 0;
+      let discount = 0;
       switch (coupon) {
         case "HAPPY_MONDAY":
-          d = price > 20 ? 20 : price;
+          discount = price > 20 ? 20 : price;
           break;
         case "LAZY_FRIDAY":
-          d = price * 0.2;
+          discount = price * 0.2;
           break;
         default:
-          d = 0;
+          discount = 0;
       }
 
       // Pretend like this is an API call =)
       const res = await new Promise((resolve) => {
         setTimeout(() => {
-          console.log({ user: _userId, products, total: price, discount: d });
+          console.log({
+            user: _userId,
+            products,
+            total: price,
+            discount,
+          });
           resolve("some-order-id");
         }, 500);
       });
