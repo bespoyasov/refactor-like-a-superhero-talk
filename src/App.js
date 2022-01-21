@@ -71,6 +71,8 @@ function App() {
   const isIdle = status === "idle";
   const isLoading = status === "loading";
 
+  if (isLoading) return "Loading...";
+
   if (isIdle) {
     return (
       <form onSubmit={handleSubmit}>
@@ -80,8 +82,6 @@ function App() {
         <button>Purchase</button>
       </form>
     );
-  } else if (isLoading) {
-    return "Loading...";
   }
 
   if (!isLoading && !isIdle) {
