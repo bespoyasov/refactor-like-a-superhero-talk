@@ -13,7 +13,7 @@ From this talk you will learn:
 In this repository, I've collected code examples that I've used in the slides. You can find links to the slides and additional materials in the list below:
 
 - [Slides from the talk](https://bespoyasov.me/slides/refactor-like-a-superhero/)
-- [Sources and useful links](https://bespoyasov.me/slides/refactor-like-a-superhero/sources.html)
+- [Sources and useful links](https://bespoyasov.me/slides/refactor-like-a-superhero/sources-en.html)
 
 ## Commit History
 
@@ -299,7 +299,7 @@ I've gathered a complete list of all the techniques, useful books, posts, and ot
 
 - [Main Heuristics](https://bespoyasov.me/slides/refactor-like-a-superhero/?full#takes)
 - [Technics and How-Tos](https://bespoyasov.me/slides/refactor-like-a-superhero/?full#conclusion)
-- [Complete List of Sources](https://bespoyasov.me/slides/refactor-like-a-superhero/sources.html)
+- [Complete List of Sources](https://bespoyasov.me/slides/refactor-like-a-superhero/sources-en.html)
 
 ## About Author
 
