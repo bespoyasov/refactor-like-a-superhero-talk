@@ -203,6 +203,8 @@ An order is a domain entity. Each domain entity has a lifecycle of one or more s
 
 Entity states and transformations are dictated by business processes and events in them. Working with such functions, it's easier for us to relate real-world processes and code transformations.
 
+Also, we get rid of all side effects in the order creation and make it so that the `createOrder` function now only returns a new order. Thus, we differentiate between functions that _return values_ and functions that _produce side effects_. This is called Command-Query Separation and it helps making code behave more expectedly and controllably.
+
 ### [Fix “Lying” Names](https://github.com/bespoyasov/refactor-like-a-superhero/commit/6aa493589e8287418b7debd14eb0758db5e9960c)
 
 When we have enough information about the business processes and the application as a whole, we can infer incorrect variable names.
@@ -232,6 +234,10 @@ We work through the lifecycle of the “order” entity.
 An order may be in different states: “created”, “prepared”, “shipped”, etc. One of these states in our case is “discount applied”. In business processes, this state can appear not only after the order has been created, but also in other cases.
 
 If we're dealing with a _separate state_, it's better to make the transformation to it a separate function. Then we can test this state in isolation and use the composition to apply a discount to completely different orders.
+
+In this case, all our data transformation functions are made as _queries_ from CQS.
+
+We don't update the created `order` object to avoid unexpected or uncontrolled side effects on that object. Instead, we _transform_ data into the new state, “discounted order”, and return a new object. This prevents application data from going into an invalid state and causing errors.
 
 ### [Make Discount Selection Declarative](https://github.com/bespoyasov/refactor-like-a-superhero/commit/9a06c8e4e9ef3cd20d629f00bfe99dda199ae983)
 
