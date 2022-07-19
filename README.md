@@ -313,5 +313,5 @@ Alex Bespoyasov, consultant at [0+X](https://0x.se). Been writing code for more 
 
 - [0x.se](https://0x.se)
 - [bespoyasov.me](https://bespoyasov.me)
-- [Twitter](https://twitter.com/bespoyasov)
+- [Twitter](https://twitter.com/bespoyasov_)
 - [Telegram](https://t.me/bespoyasov)
