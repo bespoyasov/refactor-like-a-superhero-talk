@@ -131,7 +131,7 @@ The business logic is the most important thing in an application. The simpler it
 
 I prefer to use pure functions and a functional approach to write it. Interacting with the outside world, however, is always associated with side effects.
 
-To avoid mixing business logic and side effects, I use a code organization principle called “Functional Kernel in an Imperative Shell”. (Or as Mark Seemann calls it, [Impureim Sandwich](https://blog.ploeh.dk/2020/03/02/impureim-sandwich/).)
+To avoid mixing business logic and side effects, I use a code organization principle called “Functional Core / Imperative Shell”. (Or as Mark Seemann calls it, [Impureim Sandwich](https://blog.ploeh.dk/2020/03/02/impureim-sandwich/).)
 
 The principle is to keep the logic pure and keep the side effects _around_ it. For example:
 
@@ -277,7 +277,9 @@ Error handling is also a functionality whose implementation details are not impo
 
 We can also make sure that the use of this code is convenient within the functional pipelines. This way we make the code flat, which in turn makes it easier to understand.
 
-We'll use the result container to make it easier to handle failures. Now we'll know exactly in what format to expect a response from "unsafe" functions.
+We'll use the result container to make it easier to handle failures. Now we'll know exactly in what format to expect a response from "unsafe" functions. The concrete container implementation heavily depends on the project, its style, and requirements. 
+
+I don't claim this implementation to be a “canonical” one. Instead, I encourage you to investigate your project and see if some container implementation is alrady used. Also, take a look at existing solutions like [fp/ts](https://github.com/gcanti/fp-ts) before implementing containers from scratch.
 
 ### [Use Anti-Corruption Layer for API](https://github.com/bespoyasov/refactor-like-a-superhero/commit/37e22983809bfd6ac9e7aadc09614d791a7eee3e)
 
