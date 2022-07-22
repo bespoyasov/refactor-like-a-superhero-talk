@@ -12,6 +12,7 @@
 
 В этом репозитории я собрал примеры кода, которые использовал на слайдах. Ссылки на слайды и дополнительные материалы вы можете найти в списке ниже:
 
+- [Запись на YouTube](https://youtu.be/G7NcuYJ-HSM)
 - [Слайды к докладу](https://bespoyasov.ru/slides/refactor-like-a-superhero/)
 - [Список литературы](https://bespoyasov.ru/slides/refactor-like-a-superhero/sources.html)
 
