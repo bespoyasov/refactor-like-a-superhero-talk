@@ -1,6 +1,6 @@
 # Refactor Like a Superhero
 
-> Read this [in Russian](./docs/ru.md).
+> [In Russian](./docs/ru.md)
 
 Refactoring code takes effort and resources. It isn't always possible to find time for it. In this talk, I want to share technics I use that help me find time for refactoring and search for problems in the code.
 
@@ -12,6 +12,7 @@ From this talk you will learn:
 
 In this repository, I've collected code examples that I've used in the slides. You can find links to the slides and additional materials in the list below:
 
+- [Talk on YouTube](https://youtu.be/G7NcuYJ-HSM)
 - [Slides from the talk](https://bespoyasov.me/slides/refactor-like-a-superhero/)
 - [Sources and useful links](https://bespoyasov.me/slides/refactor-like-a-superhero/sources-en.html)
 
