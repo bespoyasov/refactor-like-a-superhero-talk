@@ -1,6 +1,6 @@
-# Refactor Like a Superhero
+> Other languages: [Russian](./docs/ru.md).
 
-> [In Russian](./docs/ru.md)
+# Refactor Like a Superhero
 
 Refactoring code takes effort and resources. It isn't always possible to find time for it. In this talk, I want to share technics I use that help me find time for refactoring and search for problems in the code.
 
@@ -278,7 +278,7 @@ Error handling is also a functionality whose implementation details are not impo
 
 We can also make sure that the use of this code is convenient within the functional pipelines. This way we make the code flat, which in turn makes it easier to understand.
 
-We'll use the result container to make it easier to handle failures. Now we'll know exactly in what format to expect a response from "unsafe" functions. The concrete container implementation heavily depends on the project, its style, and requirements. 
+We'll use the result container to make it easier to handle failures. Now we'll know exactly in what format to expect a response from "unsafe" functions. The concrete container implementation heavily depends on the project, its style, and requirements.
 
 I don't claim this implementation to be a “canonical” one. Instead, I encourage you to investigate your project and see if some container implementation is alrady used. Also, take a look at existing solutions like [fp/ts](https://github.com/gcanti/fp-ts) before implementing containers from scratch.
 
