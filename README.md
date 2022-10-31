@@ -15,6 +15,7 @@ In this repository, I've collected code examples that I've used in the slides. Y
 - [Talk on YouTube](https://youtu.be/G7NcuYJ-HSM)
 - [Slides from the talk](https://bespoyasov.me/slides/refactor-like-a-superhero/)
 - [Sources and useful links](https://bespoyasov.me/slides/refactor-like-a-superhero/sources-en.html)
+- [Free online book about refactoring](https://github.com/bespoyasov/refactor-like-a-superhero)
 
 ## Commit History
 

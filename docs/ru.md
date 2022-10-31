@@ -1,7 +1,5 @@
 # Рефакторинг на максималках
 
-> Read this [in English](../README.md).
-
 Рефакторинг кода требует усилий, и не всегда на него получается выделить время. В докладе «Рефакторинг на максималках» я рассказываю, как подмечать проблемы с кодом быстрее и тратить меньше времени на их исправление.
 
 Из доклада вы узнаете:
@@ -15,6 +13,7 @@
 - [Запись на YouTube](https://youtu.be/G7NcuYJ-HSM)
 - [Слайды к докладу](https://bespoyasov.ru/slides/refactor-like-a-superhero/)
 - [Список литературы](https://bespoyasov.ru/slides/refactor-like-a-superhero/sources.html)
+- [Бесплатная онлайн-книга о рефакторинге](https://github.com/bespoyasov/refactor-like-a-superhero)
 
 ## История коммитов
 
